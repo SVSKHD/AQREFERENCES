@@ -5,20 +5,13 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const { readdirSync } = require("fs");
 require("dotenv").config();
+const connectWithDb = require("./DB/DB")
 
 // app
 const app = express();
 
 // db
-mongoose
-  .connect(process.env.DATABASE, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useFindAndModify: false,
-    useUnifiedTopology: true,
-  })
-  .then(() => console.log("DB CONNECTED"))
-  .catch((err) => console.log("DB CONNECTION ERR", err));
+connectWithDb()
 
 // middlewares
 app.use(morgan("dev"));
