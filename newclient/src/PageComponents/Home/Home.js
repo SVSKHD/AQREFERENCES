@@ -1,6 +1,14 @@
-const HomeComponent = () =>{
-return(
-    <h1>Home</h1>
-)
-}
-export default HomeComponent
+import AquaLayout from "../../Layout/Layout";
+import NewArrivals from "./Arrivals";
+
+
+const HomeComponent = () => {
+  return (
+    <AquaLayout>
+      <div>
+       <NewArrivals/>
+      </div> 
+    </AquaLayout>
+  );
+};
+export default HomeComponent;

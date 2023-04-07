@@ -1,5 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Mulish:wght@600&display=swap');
 
+/* root */
+
+/* body */
 body{
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Mulish";
 }
+/* layout */
+.aqua-footer{
+  border-style: none;
+}
+.aqua-footer-pad{
+  padding: 3px;
+}
+
