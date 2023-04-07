@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Carousel from "react-bootstrap/Carousel";
 
-const  AquaCommonCarousel = (props) => {
+const AquaCommonCarousel = (props) => {
   const [index, setIndex] = useState(0);
 
   const handleSelect = (selectedIndex, e) => {
@@ -10,17 +10,13 @@ const  AquaCommonCarousel = (props) => {
 
   return (
     <Carousel activeIndex={index} onSelect={handleSelect}>
-     <Carousel.Item>
-            <img
-              className="d-block w-100"
-              src={props.image}
-              alt="Aquakart slides"
-            />
-          </Carousel.Item>
+      {props.images.map((r, i) => (
+        <Carousel.Item>
+          <img className="d-block w-100" src={r.url} alt="Aquakart slides" />
+        </Carousel.Item>
+      ))}
     </Carousel>
   );
-}
+};
 
-export default AquaCommonCarousel
-
-
+export default AquaCommonCarousel;

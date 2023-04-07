@@ -1,13 +1,12 @@
 import AquaLayout from "../../Layout/Layout";
 import NewArrivals from "./Arrivals";
 
-
 const HomeComponent = () => {
   return (
     <AquaLayout>
-      <div>
-       <NewArrivals/>
-      </div> 
+      <div className="container">
+        <NewArrivals />
+      </div>
     </AquaLayout>
   );
 };
