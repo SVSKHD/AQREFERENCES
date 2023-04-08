@@ -14,3 +14,17 @@ body{
   padding: 3px;
 }
 
+.AQ-carousel{
+  border-radius: 10px;
+}
+
+
+.AQ-card:hover {
+  transform: scale(1.1);
+}
+.AQ-card {
+  transition: transform 0.5s;
+}
+
+
+

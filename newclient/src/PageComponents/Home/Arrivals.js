@@ -15,7 +15,6 @@ const NewArrivals = () => {
     setLoading(true);
     // sort, order, limit
     getProducts("sold", "desc").then((res) => {
-      console.log("prod" , res.data)
       setProducts(res.data);
       setLoading(false);
     });
