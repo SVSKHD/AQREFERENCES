@@ -4,6 +4,7 @@ import {BrowserRouter as Router , Routes , Route} from "react-router-dom"
 import HomeIndex from "./Pages/HomeIndex"
 import AboutIndex from "./Pages/AboutIndex"
 import ShopIndex from "./Pages/ShopIndex"
+import cartIndex from "./Pages/cartIndex"
 //notfound
 import NotFoundIndex from "./Pages/NotFoundIndex"
 
@@ -28,6 +29,11 @@ function App() {
       name:"Shop",
       path:"/shop",
       component:<ShopIndex/>
+    },
+    {
+      name:"Cart",
+      path:"/cart",
+      component:<cartIndex/>
     }
   ]
   return (
