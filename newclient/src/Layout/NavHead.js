@@ -66,6 +66,17 @@ function AquaNavHead() {
               <>
                 <h4>cart items</h4>
                 <hr />
+                {user?(
+                  <>
+                  
+                  </>
+                ):(
+                  <>
+                  <div className="text-center p-4">
+                 <Button variant="link" onClick={()=>setUserModal(true)}>Please login here</Button>
+                  </div>
+                  </>
+                )}
                 {cart.map((r, i) => (
                   <>
                     <AqCartCard
