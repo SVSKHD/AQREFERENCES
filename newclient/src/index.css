@@ -13,6 +13,9 @@ body{
 .aqua-footer-pad{
   padding: 3px;
 }
+.layout-height{
+  min-height: 300px;
+}
 
 .AQ-carousel{
   border-radius: 10px;
@@ -26,5 +29,30 @@ body{
   transition: transform 0.5s;
 }
 
+
+
+/* shop */
+
+.aq-mobile-filters{
+display: none;
+background: #000;
+height: 50px;
+text-align: center;
+color: aliceblue;
+position: fixed;
+bottom: 0;
+left: 0;
+right: 0;
+}
+
+
+@media screen and (max-width:480px) {
+  .aq-mobile-filters{
+    display: block!important;
+    }
+  .aq-shop-filters{
+    display: none;
+  }
+}
 
 

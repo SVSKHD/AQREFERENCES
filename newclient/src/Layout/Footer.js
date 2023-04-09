@@ -7,7 +7,7 @@ const AquaFooter = () => {
   let Year = new Date().getFullYear();
   return (
     <>
-      <Card body className="aqua-footer fixed-bottom">
+      <Card body className="aqua-footer">
         <div className="row">
           <div className="col-lg-5 col-md-6 col-xs-6 col-sm-6 text-center">
             <Button variant="link">

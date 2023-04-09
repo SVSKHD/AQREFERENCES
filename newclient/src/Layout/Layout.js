@@ -7,7 +7,7 @@ const AquaLayout = (props) => {
     <>
       <AquaNavHead />
       <AquaHead title={props.title} />
-      <div className="container-fluid">{props.children}</div>
+      <div className="container-fluid layout-height">{props.children}</div>
       <AquaFooter />
     </>
   );
