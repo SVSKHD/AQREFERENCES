@@ -1,38 +1,38 @@
-import { Carousel , Button} from "react-bootstrap"
-import AQ from "../../Assests/Default.png"
+import { Carousel, Button } from "react-bootstrap";
+import AQ from "../../Assests/Default.png";
 
-const AqHomeCarousel = () =>{
-return(
+const AqHomeCarousel = () => {
+  return (
     <>
-       <Carousel variant="dark">
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={AQ}
-          alt="First slide"
-          height="1000"
-        />
-        <Carousel.Caption>
-          <h3>First slide label</h3>
-          <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-      <Carousel.Item>
-        <img
-          className="d-block w-100"
-          src={AQ}
-          alt="Second slide"
-          height="1000"
-        />
+      <Carousel variant="dark" className="shadow-lg img-thumbnail mb-3">
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={AQ}
+            alt="First slide"
+            height="800"
+          />
+          <Carousel.Caption className="text-start aq-home-carousel">
+            <h3>First slide label</h3>
+            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+        <Carousel.Item>
+          <img
+            className="d-block w-100"
+            src={AQ}
+            alt="Second slide"
+            height="800"
+          />
 
-        <Carousel.Caption className="text">
+          <Carousel.Caption className="text-start aq-home-carousel">
             <Button>Hello second</Button>
-          <h3>Second slide label</h3>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </Carousel.Caption>
-      </Carousel.Item>
-    </Carousel>
+            <h3>Second slide label</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </Carousel.Caption>
+        </Carousel.Item>
+      </Carousel>
     </>
-)
-}
-export default AqHomeCarousel
+  );
+};
+export default AqHomeCarousel;

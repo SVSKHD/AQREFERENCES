@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { getProducts } from "../../services/product";
 import ProductCard from "../../Components/cards/productCard";
 import LoadingCard from "../../Components/cards/loadingProductCard";
+import dummyCard from "../../Components/cards/dummyCard";
 
 const NewArrivals = () => {
   useEffect(() => {
@@ -25,18 +26,26 @@ const NewArrivals = () => {
         {loading ? (
           <div className="row">
             {products.map((r, i) => (
-              <div className="col-md-6 col-lg-4 col-xs-12 col-sm-12" key={i}>
+              <div
+                className="col-md-6 col-lg-4 col-xs-12 col-sm-12 mb-5"
+                key={i}
+              >
                 <LoadingCard />
               </div>
             ))}
           </div>
         ) : (
-          <div className="row">
+          <div className="container">
+            <div className="row">
             {products.map((r, i) => (
-              <div className="col-md-6 col-lg-4 col-xs-12 col-sm-12" key={i}>
+              <div
+                className="col-md-6 col-lg-4 col-xs-12 col-sm-12 mb-5"
+                key={i}
+              >
                 <ProductCard r={r} />
               </div>
             ))}
+            </div>
           </div>
         )}
       </div>

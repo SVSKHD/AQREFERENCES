@@ -1,6 +1,6 @@
 import { useState } from "react";
 import AquaLayout from "../../Layout/Layout";
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 import AqDrawer from "../../Components/Drawers/Drawer";
 
 const ShopComponent = () => {
@@ -11,7 +11,6 @@ const ShopComponent = () => {
         <div className="row">
           {filters}
           <div className="col-md-2 col-lg-2 col-xs-12 col-sm-12 aq-shop-filters">
-
             {filters ? (
               <Card>
                 <Card.Body>This is some text within a card body.</Card.Body>
@@ -28,14 +27,11 @@ const ShopComponent = () => {
           </div>
         </div>
         <div className="aq-mobile-filters">
-          <a
-            className="btn btn-light"
-            onClick={() => setShowFilters(true)}
-          >
+          <Button variant="light" onClick={() => setShowFilters(true)}>
             filters
-          </a>
+          </Button>
         </div>
-        <AqDrawer show={filters}/>
+        <AqDrawer show={filters} />
       </AquaLayout>
     </>
   );

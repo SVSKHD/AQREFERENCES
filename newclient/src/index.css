@@ -27,6 +27,11 @@ body{
 }
 .AQ-card {
   transition: transform 0.5s;
+  text-align: left!important;
+}
+
+.aq-home-carousel{
+  bottom: 20rem!important;
 }
 
 

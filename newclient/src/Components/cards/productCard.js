@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Button, Carousel, Card} from "react-bootstrap";
+import { Button, Carousel, Card } from "react-bootstrap";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { FaEye } from "react-icons/fa";
 import { IoCartOutline, IoCart } from "react-icons/io5";
@@ -18,7 +18,7 @@ const ProductCard = ({ r }) => {
   const dispatch = useDispatch();
 
   const handleAddToCart = () => {
-    setCart(!Cart)
+    setCart(!Cart);
     // create cart array
     let cart = [];
     if (typeof window !== "undefined") {
@@ -37,7 +37,7 @@ const ProductCard = ({ r }) => {
       // console.log('unique', unique)
       localStorage.setItem("cart", JSON.stringify(unique));
       // show tooltip
-    
+
       // add to redux state
       dispatch({
         type: "ADD_TO_CART",
@@ -52,6 +52,7 @@ const ProductCard = ({ r }) => {
   };
   return (
     <>
+    <div className="d-flex justify-content-around AQ-card">
       <Card className="shadow-lg AQ-card" style={{ width: "22rem" }}>
         <div className="p-2">
           <Carousel
@@ -95,6 +96,8 @@ const ProductCard = ({ r }) => {
           </Button>
         </Card.Body>
       </Card>
+    </div>
+      
     </>
   );
 };

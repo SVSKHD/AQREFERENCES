@@ -6,7 +6,7 @@ exports.create = async (req, res) => {
   try {
     // console.log(req.body);
     // return;
-    const { name, expiry, discount } = req.body.coupon;
+    const { name, expiry, discount } = req.body;
     res.json(await new Coupon({ name, expiry, discount }).save());
   } catch (err) {
     console.log(err);

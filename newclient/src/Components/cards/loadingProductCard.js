@@ -5,7 +5,7 @@ import AQ from "../../Assests/Default.png"
 
 function LoadingCard() {
   return (
-    <div className="d-flex justify-content-around">
+    <div className="d-flex justify-content-around AQ-card">
       <Card style={{ width: '22rem' }}>
         <Card.Img variant="top" src={AQ} />
         <Card.Body>
