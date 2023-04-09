@@ -3,21 +3,24 @@
 /* root */
 
 /* body */
-body{
+body {
   font-family: "Mulish";
 }
+
 /* layout */
-.aqua-footer{
+.aqua-footer {
   border-style: none;
 }
-.aqua-footer-pad{
+
+.aqua-footer-pad {
   padding: 3px;
 }
-.layout-height{
+
+.layout-height {
   min-height: 300px;
 }
 
-.AQ-carousel{
+.AQ-carousel {
   border-radius: 10px;
 }
 
@@ -25,39 +28,61 @@ body{
 .AQ-card:hover {
   transform: scale(1.1);
 }
+
 .AQ-card {
   transition: transform 0.5s;
-  text-align: left!important;
+  text-align: left !important;
 }
 
-.aq-home-carousel{
-  bottom: 20rem!important;
+.aq-home-carousel {
+  bottom: 20rem !important;
 }
+
+.aq-offer-card {
+  height: 180px;
+}
+
+
+
+.aq-welcome-card {
+  background: #0f0c29;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+
+.aq-coupon-card{
+  background: #780206;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #061161, #780206);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #061161, #780206); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  
+}
+
+
 
 
 
 /* shop */
 
-.aq-mobile-filters{
-display: none;
-background: #000;
-height: 50px;
-text-align: center;
-color: aliceblue;
-position: fixed;
-bottom: 0;
-left: 0;
-right: 0;
+.aq-mobile-filters {
+  display: none;
+  background: #000;
+  height: 50px;
+  text-align: center;
+  color: aliceblue;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 
 @media screen and (max-width:480px) {
-  .aq-mobile-filters{
-    display: block!important;
-    }
-  .aq-shop-filters{
+  .aq-mobile-filters {
+    display: block !important;
+  }
+
+  .aq-shop-filters {
     display: none;
   }
 }
-
-
