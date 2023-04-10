@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import HomeIndex from "./Pages/HomeIndex"
 import AboutIndex from "./Pages/AboutIndex"
 import ShopIndex from "./Pages/ShopIndex"
-import cartIndex from "./Pages/cartIndex"
+import CartIndex from "./Pages/cartIndex"
 //notfound
 import NotFoundIndex from "./Pages/NotFoundIndex"
 
@@ -35,7 +35,7 @@ function App() {
     {
       name: "Cart",
       path: "/cart",
-      component: <cartIndex />
+      component: <CartIndex />
     }
   ]
   const customToastStyle = {

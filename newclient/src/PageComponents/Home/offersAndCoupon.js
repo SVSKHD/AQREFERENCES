@@ -40,7 +40,7 @@ const AqOffersAndCoupon = () => {
             <Card className="aq-offer-card aq-welcome-card text-white">
               <Card.Body>
                 <Card.Title>Welcome Back</Card.Title>
-                <Card.Text className="display-4">
+                <Card.Text className="display-6">
                   Some quick 
                 </Card.Text>
                 <Button variant="link" className="text-white"><MdDashboard size={25}/></Button>

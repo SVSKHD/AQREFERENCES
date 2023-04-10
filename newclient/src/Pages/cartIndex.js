@@ -1,8 +1,8 @@
-import cartComponent from "../PageComponents/cart/cart";
+import CartComponent from "../PageComponents/cart/cart";
 const cartIndex = () => {
   return (
     <>
-      <cartComponent />
+      <CartComponent />
     </>
   );
 };
