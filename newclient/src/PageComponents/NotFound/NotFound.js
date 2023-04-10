@@ -7,7 +7,7 @@ return(
     <>
     <div>
     <div className="text-center">
-        <img src={NF} height="400"/>
+        <img src={NF} alt="not-found" height="400"/>
         <br/>
         <Button href="/" variant="secondary" size="sm">
           <FaHome size={20}/>

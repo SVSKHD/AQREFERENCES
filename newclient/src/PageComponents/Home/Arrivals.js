@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { getProducts } from "../../services/product";
 import ProductCard from "../../Components/cards/productCard";
 import LoadingCard from "../../Components/cards/loadingProductCard";
-import dummyCard from "../../Components/cards/dummyCard";
 
 const NewArrivals = () => {
   useEffect(() => {

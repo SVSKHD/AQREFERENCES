@@ -21,7 +21,7 @@ const AqOffersAndCoupon = () => {
       <div className="container mb-3">
         <div className="row">
           <div className="col-md-8 col-lg-8 col-xs-12 col-sm-12">
-            <Card className="aq-offer-card aq-coupon-card text-white">
+            <Card className="aq-offer-card aq-coupon-card text-white mb-2">
               <Card.Body>
                 <Card.Title>Existing Coupons</Card.Title>
                 <Card.Subtitle className="mb-2 text-muted">
