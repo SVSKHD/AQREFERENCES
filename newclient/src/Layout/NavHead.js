@@ -92,6 +92,7 @@ function AquaNavHead() {
                 <h4>No items in cart yet</h4>
               </>
             )}
+            <Button href="/cart">Go To Cart</Button>
           </AqDrawer>
         </Navbar.Collapse>
       </Container>
