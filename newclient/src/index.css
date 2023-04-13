@@ -88,3 +88,12 @@ body {
     display: none;
   }
 }
+
+
+.aq-cart-page-title{
+  font-weight: bold!important;
+}
+
+.aq-text-decorate{
+  text-decoration: none!important;
+}
