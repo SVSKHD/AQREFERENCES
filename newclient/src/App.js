@@ -1,12 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 //libraries
-import { ToastContainer} from 'react-toastify';
+import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 //pages
 import HomeIndex from "./Pages/HomeIndex"
 import AboutIndex from "./Pages/AboutIndex"
 import ShopIndex from "./Pages/ShopIndex"
 import CartIndex from "./Pages/cartIndex"
+import LoginIndex from "./Pages/LoginIndex";
 //notfound
 import NotFoundIndex from "./Pages/NotFoundIndex"
 
@@ -36,17 +37,22 @@ function App() {
       name: "Cart",
       path: "/cart",
       component: <CartIndex />
+    },
+    {
+      name: "login",
+      path: "/login",
+      component: <LoginIndex />
     }
   ]
   const customToastStyle = {
-    borderRadius : "40px"
+    borderRadius: "40px"
   }
   return (
     <>
-    <ToastContainer 
-    bodyClassName={customToastStyle}
-    autoClose={8000}
-    />
+      <ToastContainer
+        bodyClassName={customToastStyle}
+        autoClose={8000}
+      />
       <Router>
         <Routes>
           {AquaRoutes.map((r, i) => (
