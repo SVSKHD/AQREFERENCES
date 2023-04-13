@@ -5,8 +5,7 @@ const LoginAuthPageComponent = () => {
   return (
     <AuthLayout>
       <div className="container">
-        <div class="card mb-3 aq-login-page shadow-lg">
-          <div class="row d-flex justify-content-center align-items-center h-100">
+        {/* <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-md-4">
               <img src={AQ} class="img-fluid rounded-start" alt="Aquakart Logo" />
             </div>
@@ -45,7 +44,55 @@ const LoginAuthPageComponent = () => {
                 </div>
               </div>
             </div>
+          </div> */}
+        <div class="card mb-3 shadow-lg">
+          <div className="container">
+          <div class="row g-0">
+            <div class="col-md-6">
+              <img src={AQ} class="img-fluid rounded-start" alt="Aquakart Logo" />
+            </div>
+            <div class="col-md-6">
+              <div className="container">
+                <div className="mb-5"/>
+              <img src={AQ} alt="Aqukart Logo" height="150"/>
+              <div class="card-body">
+                <form>
+                  <h3>Sign In</h3>
+                  <div className="mb-3">
+                    <label>Email address</label>
+                    <input
+                      type="email"
+                      className="form-control"
+                      placeholder="Enter email"
+                    />
+                  </div>
+                  <div className="mb-3">
+                    <label>Password</label>
+                    <input
+                      type="password"
+                      className="form-control"
+                      placeholder="Enter password"
+                    />
+                  </div>
+                  <div className="mb-3"/>
+                  <div className="d-grid">
+                    <button type="submit" className="btn btn-primary">
+                      Submit
+                    </button>
+                  </div>
+                  <p className="forgot-password text-right">
+                    Forgot <a href="#">password?</a>
+                  </p>
+                </form>
+                <hr className="login-hr"/>
+<div className="text-center">
+
+</div>
+              </div>
+            </div>
+            </div>
           </div>
+        </div>
         </div>
       </div>
     </AuthLayout>
