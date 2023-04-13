@@ -97,3 +97,11 @@ body {
 .aq-text-decorate{
   text-decoration: none!important;
 }
+
+.aq-auth-margin{
+  margin-bottom: 280px;
+}
+
+.aq-login-page{
+  width: 700px;
+}

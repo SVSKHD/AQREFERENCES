@@ -5,7 +5,8 @@ import {FaShoppingBag} from "react-icons/fa"
 const AuthHead = () => {
     return (
         <>
-            <Navbar>
+        <div>
+            <Navbar className='aq-auth-margin'>
                 <Container fluid>
                     <Navbar.Brand href="#home">AquaKart</Navbar.Brand>
                     <Navbar.Toggle />
@@ -14,6 +15,7 @@ const AuthHead = () => {
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
+            </div>
         </>
     )
 }
