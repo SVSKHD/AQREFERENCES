@@ -3,15 +3,22 @@ import AQ from "../../Assests/Default.png";
 import { FaGoogle } from "react-icons/fa";
 import { auth, Provider } from "../../config/firebase";
 import { signInWithPopup } from "firebase/auth";
+import {useNavigate} from "react-router-dom"
+import AqCustomToast from "../../Components/toasts/toasts"
 
 const LoginAuthPageComponent = () => {
+  const Navigate = useNavigate()
+
   const handleGoogleLogin = async () => {
     try {
       await signInWithPopup(auth, Provider).then((data) => {
         console.log("data", data);
       });
+      Navigate("/")
+      AqCustomToast("succesfully logged in")
     } catch (error) {
       console.log(error);
+      AqCustomToast("sorry")
     }
   };
   return (
