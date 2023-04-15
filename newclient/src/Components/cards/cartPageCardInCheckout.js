@@ -7,7 +7,7 @@ const CartPageComponent = (props) => {
             <div className="card mb-3 shadow-lg">
                 <div className="row g-0">
                     <div className="col-md-4">
-                        <img src={props.image} className="img-fluid rounded-start" alt={props.title} />
+                        <img src={props.image} className="rounded-start" alt={props.title}/>
                     </div>
                     <div className="col-md-8">
                         <div className="card-body">

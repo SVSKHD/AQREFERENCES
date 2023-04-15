@@ -1,12 +1,12 @@
 import * as firebase from "firebase";
 const firebaseConfig = {
-    apiKey: "AIzaSyAIqwQAzounicAUHH5JEt-erjgRL_yj0F4",
-    authDomain: "aq-ecom.firebaseapp.com",
-    projectId: "aq-ecom",
-    storageBucket: "aq-ecom.appspot.com",
-    messagingSenderId: "728481329129",
-    appId: "1:728481329129:web:43a09fdf2fb4d32de3a578",
-    measurementId: "G-7KVP4LN1ZB"
+    apiKey:process.env.REACT_APP_FB_APIKEY,
+    authDomain: process.env.REACT_APP_FB_AUTHDOMAIN,
+    projectId: process.env.REACT_APP_FB_PROJECTID,
+    storageBucket: process.env.REACT_APP_FB_STORAGE_BUCKET,
+    messagingSenderId: process.env.REACT_APP_FB_MESSENGER_ID,
+    appId: process.env.REACT_APP_FB_APP_ID,
+    measurementId: process.env.REACT_APP_FB_MEASURE_ID
   };
 
 
