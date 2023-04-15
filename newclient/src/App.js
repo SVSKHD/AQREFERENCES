@@ -13,6 +13,8 @@ import CartIndex from "./Pages/cartIndex";
 import LoginIndex from "./Pages/LoginIndex";
 //notfound
 import NotFoundIndex from "./Pages/NotFoundIndex";
+//
+import IndividualCategoryIndex from "./Pages/indivdualCategoryIndex";
 
 function App() {
   useEffect(() => {
@@ -49,6 +51,11 @@ function App() {
       path: "/login",
       component: <LoginIndex />,
     },
+    {
+      name:"Individual-Categories",
+      path:"/category/:name",
+      component:<IndividualCategoryIndex/>
+    }
   ];
   const customToastStyle = {
     borderRadius: "40px",

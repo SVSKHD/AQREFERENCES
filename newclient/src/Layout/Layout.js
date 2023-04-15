@@ -7,8 +7,14 @@ const AquaLayout = (props) => {
   return (
     <>
       <AquaNavHead />
-      <AquaMapCategories/>
-      <AquaHead title={props.title} />
+      <AquaMapCategories />
+      <AquaHead
+        title={props.title}
+        description={props.description}
+        keywords={props.keywords}
+        images={props.images}
+        canurl={props.canurl}
+      />
       <div className="container-fluid layout-height">{props.children}</div>
       <AquaFooter />
     </>

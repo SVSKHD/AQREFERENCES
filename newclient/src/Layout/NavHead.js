@@ -9,9 +9,11 @@ import {
   InputGroup,
 } from "react-bootstrap";
 import { FaCartArrowDown, FaUser } from "react-icons/fa";
-import AqVerticalCenterModal from "../Components/Dialogs/verticallyCenteredModal";
 import AqDrawer from "../Components/Drawers/Drawer";
 import AqCartCard from "../Components/cards/cartCard";
+import AuthDialogLayout from "../Components/Auth/AuthDialogLayout";
+import LoginAuth from "../Components/Auth/LoginDialog";
+import SignupAuth from "../Components/Auth/SignupDialog";
 
 function AquaNavHead() {
   const { user, cart } = useSelector((state) => ({ ...state }));
@@ -52,10 +54,19 @@ function AquaNavHead() {
           >
             <FaUser size={25} />
           </Button>
-          <AqVerticalCenterModal
+          <AuthDialogLayout
             show={userModal}
             hide={() => setUserModal(false)}
-          />
+          >
+            <div className="container-fluid">
+               <LoginAuth/>
+               <SignupAuth/>
+               <div className="text-center">
+               <button className="btn">hello</button>
+               </div>
+            </div>
+          </AuthDialogLayout>
+          
           <AqDrawer
             show={cartDrawer}
             hide={() => setCartDrawer(false)}

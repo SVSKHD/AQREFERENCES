@@ -3,14 +3,18 @@ import AQ from "../../Assests/Default.png";
 const AqCategoryCard = (props) => {
   const Navigate = useNavigate();
   const toRoute = (val) => {
-    Navigate(`category/${val}`);
+    Navigate(`/category/${val}`);
   };
   return (
     <>
-      <div onClick={()=>toRoute(props.slug)} class="card m-3" style={{ maxWidth: "540px" }}>
+      <div
+        onClick={() => toRoute(props.slug)}
+        class="card m-3"
+        style={{ maxWidth: "540px" }}
+      >
         <div class="row g-0">
           <div class="col-md-4">
-            <img src={AQ} class="img-fluid rounded-start" alt={props.title} />
+            <img src={AQ} class="img-fluid rounded-start aq-category-scroll-card" alt={props.title} />
           </div>
           <div class="col-md-8">
             <div class="card-body">

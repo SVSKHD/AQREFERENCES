@@ -123,3 +123,12 @@ body {
   position: relative;
   top: -13px;
 }
+
+.aq-category-scroll-card{
+  height: 65px;
+}
+
+
+.aq-image{
+  height: 350px;
+}
