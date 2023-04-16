@@ -14,13 +14,24 @@ import AqCartCard from "../Components/cards/cartCard";
 import AuthDialogLayout from "../Components/Auth/AuthDialogLayout";
 import LoginAuth from "../Components/Auth/LoginDialog";
 import SignupAuth from "../Components/Auth/SignupDialog";
+import useAuthStore from "../zustStore/Auth";
 
 function AquaNavHead() {
+  //store
   const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
+  //zustand store
+  const userSignup = useAuthStore((state) => state.userSignupStatus);
+  const toggleSignup = useAuthStore((state) => state.toggleSignup);
   const [userModal, setUserModal] = useState(false);
   const [cartDrawer, setCartDrawer] = useState(false);
+  const [signupTitle , setToggleSignupTitle] = useState("No Account Yet..? Please Signup")
 
+  const ToggleSignupStatus = () =>{
+    setToggleSignupTitle("Already A User..? Please Login")
+    toggleSignup()
+  }
+ 
   return (
     <Navbar className="bg-white text-white" expand="lg">
       <Container fluid>
@@ -54,19 +65,17 @@ function AquaNavHead() {
           >
             <FaUser size={25} />
           </Button>
-          <AuthDialogLayout
-            show={userModal}
-            hide={() => setUserModal(false)}
-          >
+          <AuthDialogLayout show={userModal} hide={() => setUserModal(false)}>
             <div className="container-fluid">
-               <LoginAuth/>
-               <SignupAuth/>
-               <div className="text-center">
-               <button className="btn">hello</button>
-               </div>
+              {userSignup ? <SignupAuth /> : <LoginAuth />}
+              <div className="text-center">
+                <button className="btn" onClick={ToggleSignupStatus}>
+                 {userSignup ?"Already A User..? Please Login" :  "No Account Yet..? Please Signup"}
+                </button>
+              </div>
             </div>
           </AuthDialogLayout>
-          
+
           <AqDrawer
             show={cartDrawer}
             hide={() => setCartDrawer(false)}
@@ -77,15 +86,15 @@ function AquaNavHead() {
               <>
                 <h4>cart items</h4>
                 <hr />
-                {user?(
+                {user ? (
+                  <></>
+                ) : (
                   <>
-                  
-                  </>
-                ):(
-                  <>
-                  <div className="text-center p-4">
-                 <Button variant="link" onClick={()=>setUserModal(true)}>Please login here</Button>
-                  </div>
+                    <div className="text-center p-4">
+                      <Button variant="link" onClick={() => setUserModal(true)}>
+                        Please login here
+                      </Button>
+                    </div>
                   </>
                 )}
                 {cart.map((r, i) => (

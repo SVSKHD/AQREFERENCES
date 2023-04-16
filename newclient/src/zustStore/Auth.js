@@ -1,7 +1,8 @@
-import { create } from 'zustand'
+import { create } from "zustand";
 
-const useAuthStore = create((set)=>({
-    userSignupstatus:false
-}))
+const useAuthStore = create((set) => ({
+  userSignupStatus: false,
+  toggleSignup: ()=>set((state) => ({ userSignupStatus: !state.userSignupStatus })),
+}));
 
-export default useAuthStore
+export default useAuthStore;
