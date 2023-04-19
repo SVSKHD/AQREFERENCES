@@ -15,8 +15,17 @@ import LoginIndex from "./Pages/LoginIndex";
 import NotFoundIndex from "./Pages/NotFoundIndex";
 //
 import IndividualCategoryIndex from "./Pages/indivdualCategoryIndex";
+//resuables
+import AuthCommonDialog from "./PageComponents/Auth/AuthCommonDialog";
+
+
+//Store
+import useAuthStore from "./zustStore/Auth";
+
 
 function App() {
+  const userDialog = useAuthStore((state) => state.userDialog);
+  const userDialogHide = useAuthStore((state)=>state.toggleDialog)
   useEffect(() => {
     ReactGA.initialize(process.env.REACT_APP_ANALYTICS);
   }, []);
@@ -62,6 +71,7 @@ function App() {
   };
   return (
     <>
+      <AuthCommonDialog show={userDialog} hide={userDialogHide}/>
       <ToastContainer bodyClassName={customToastStyle} autoClose={8000} />
       <Router>
         <Routes>
