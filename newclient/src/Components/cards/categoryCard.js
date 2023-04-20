@@ -1,14 +1,13 @@
-import { useNavigate } from "react-router-dom";
+import {Link} from "react-router-dom";
 import AQ from "../../Assests/Default.png";
 const AqCategoryCard = (props) => {
-  const Navigate = useNavigate();
-  const toRoute = (val) => {
-    Navigate(`/category/${val}`);
-  };
+
+ 
   return (
+   
     <>
+     <Link to={`/category/${props.slug}`} className="aq-text-decorate">
       <div
-        onClick={() => toRoute(props.slug)}
         class="card m-3"
         style={{ maxWidth: "540px" }}
       >
@@ -23,6 +22,7 @@ const AqCategoryCard = (props) => {
           </div>
         </div>
       </div>
+      </Link>
     </>
   );
 };

@@ -70,7 +70,7 @@ const ProductCard = ({ r }) => {
   };
   return (
     <>
-      <div className="d-flex justify-content-around AQ-card">
+      <div className="d-flex justify-content-around AQ-card mb-2">
         <Card className="shadow-lg AQ-card" style={{ width: "22rem" }}>
           <div className="p-2">
             <Carousel
