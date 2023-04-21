@@ -25,13 +25,15 @@ function AquaNavHead() {
   const toggleSignup = useAuthStore((state) => state.toggleSignup);
   const [userModal, setUserModal] = useState(false);
   const [cartDrawer, setCartDrawer] = useState(false);
-  const [signupTitle , setToggleSignupTitle] = useState("No Account Yet..? Please Signup")
+  const [signupTitle, setToggleSignupTitle] = useState(
+    "No Account Yet..? Please Signup"
+  );
 
-  const ToggleSignupStatus = () =>{
-    setToggleSignupTitle("Already A User..? Please Login")
-    toggleSignup()
-  }
- 
+  const ToggleSignupStatus = () => {
+    setToggleSignupTitle("Already A User..? Please Login");
+    toggleSignup();
+  };
+
   return (
     <Navbar className="bg-white text-white" expand="lg">
       <Container fluid>
@@ -58,19 +60,32 @@ function AquaNavHead() {
             </span>
           </button>
 
-          <Button
-            variant="link"
-            className="text-dark"
-            onClick={() => setUserModal(true)}
-          >
-            <FaUser size={25} />
-          </Button>
+          {user ? (
+            <>
+              <button className="btn btn-dark">
+                <strong>{user.name}</strong>
+              </button>
+            </>
+          ) : (
+            <>
+              <Button
+                variant="link"
+                className="text-dark"
+                onClick={() => setUserModal(true)}
+              >
+                <FaUser size={25} />
+              </Button>
+            </>
+          )}
+
           <AuthDialogLayout show={userModal} hide={() => setUserModal(false)}>
             <div className="container-fluid">
               {userSignup ? <SignupAuth /> : <LoginAuth />}
               <div className="text-center">
                 <button className="btn" onClick={ToggleSignupStatus}>
-                 {userSignup ?"Already A User..? Please Login" :  "No Account Yet..? Please Signup"}
+                  {userSignup
+                    ? "Already A User..? Please Login"
+                    : "No Account Yet..? Please Signup"}
                 </button>
               </div>
             </div>
@@ -87,7 +102,7 @@ function AquaNavHead() {
                 <h4>cart items</h4>
                 <hr />
                 {user ? (
-                 <></>
+                  <></>
                 ) : (
                   <>
                     <div className="text-center p-4">

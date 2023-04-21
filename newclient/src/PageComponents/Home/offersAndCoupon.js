@@ -20,11 +20,10 @@ const AqOffersAndCoupon = () => {
     });
   };
   const toggleDialogStatus = useAuthStore((state) => state.toggleDialog);
-  const toggleSignupButton = () =>{
-     toggleDialogStatus()
-  }
+  const toggleSignupButton = () => {
+    toggleDialogStatus();
+  };
 
- 
   return (
     <>
       <div className="container mb-3">
@@ -50,9 +49,7 @@ const AqOffersAndCoupon = () => {
               <Card className="aq-offer-card aq-welcome-card text-white">
                 <Card.Body>
                   <Card.Title>Welcome Back</Card.Title>
-                  <Card.Text className="display-6">
-                    hello 
-                  </Card.Text>
+                  <Card.Text className="display-6">{user.name}</Card.Text>
                   <Button variant="link" className="text-white">
                     <MdDashboard size={25} />
                   </Button>
@@ -65,10 +62,16 @@ const AqOffersAndCoupon = () => {
                 </Card.Body>
               </Card>
             ) : (
-              <Card onClick={toggleDialogStatus} className="aq-offer-card aq-welcome-card text-white">
+              <Card
+                onClick={toggleDialogStatus}
+                className="aq-offer-card aq-welcome-card text-white"
+              >
                 <Card.Body>
                   <Card.Text className="text-center">
-                    <button onClick={()=>toggleDialogStatus} className="btn btn-lg text-white">
+                    <button
+                      onClick={() => toggleDialogStatus}
+                      className="btn btn-lg text-white"
+                    >
                       Please Login for your orders and many more
                     </button>
                   </Card.Text>
