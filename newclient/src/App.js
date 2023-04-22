@@ -1,6 +1,9 @@
 import { useEffect } from "react";
 import ReactGA from "react-ga";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+//zustand
+import useUserStore from "./zustStore/user";
+
 //libraries
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -17,18 +20,25 @@ import NotFoundIndex from "./Pages/NotFoundIndex";
 import IndividualCategoryIndex from "./Pages/indivdualCategoryIndex";
 //resuables
 import AuthCommonDialog from "./PageComponents/Auth/AuthCommonDialog";
-
+import AuthDrawer from "./PageComponents/AuthDrawer/AuthDrawer";
 
 //Store
 import useAuthStore from "./zustStore/Auth";
 
+//storevariabels
+
+
 
 function App() {
+  const userStore = useUserStore((state)=>state.userData)
   const userDialog = useAuthStore((state) => state.userDialog);
-  const userDialogHide = useAuthStore((state)=>state.toggleDialog)
+  const userDialogHide = useAuthStore((state)=>state.DialogDefault)
+
   useEffect(() => {
+    userDialog?console.log("hello") :console.log("no hello")
     ReactGA.initialize(process.env.REACT_APP_ANALYTICS);
-  }, []);
+  }, [userStore , userDialog]);
+
   const AquaRoutes = [
     {
       name: "Home",

@@ -6,7 +6,7 @@ import * as serviceWorker from "./serviceWorker";
 import { BrowserRouter } from "react-router-dom";
 import "antd/dist/antd.css";
 
-import { createStore } from "redux";
+import { legacy_createStore as createStore } from "redux";
 import { Provider } from "react-redux";
 import { composeWithDevTools } from "redux-devtools-extension";
 import rootReducer from "./reducers";

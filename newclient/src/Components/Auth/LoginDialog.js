@@ -6,6 +6,7 @@ import {useDispatch , useSelector} from "react-redux"
 import AqCustomToast from "../toasts/toasts";
 import {createOrUpdateUser} from "../../services/auth"
 import useAuthStore from "../../zustStore/Auth";
+import useUserStore from "../../zustStore/user";
 
 const LoginAuth = () => {
   const [email, setEmail] = useState("");
@@ -17,12 +18,15 @@ const LoginAuth = () => {
   const dispatch = useDispatch()
 
   //zustand
-  const toggleDialogFalse = useAuthStore((state) => state.toggleAuthDialogFalse);
-
+  const ToggleDialogFalse = useAuthStore((state) => state.toggleDialogFalse);
+  const ToggleUserData = useUserStore((state)=>state.toggleUserData)
+  const toggleDialogStatus = useAuthStore((state) => state.toggleDialog);
+  const userStore = useUserStore((state)=>state.userData)
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-  const handleGoogleLogin = async () => {
+  const handleGoogleLogin = async (e) => {
+    e.preventDefault()
     setGoogleLoading(true);
     try {
       await signInWithPopup(auth, Provider).then(async(data) => {
@@ -31,6 +35,8 @@ const LoginAuth = () => {
         console.log(idTokenResult)
         await createOrUpdateUser(idTokenResult.token).then((res)=>{
           // let data = res
+          ToggleUserData(res.data)
+          console.log(userStore)
           dispatch({
             type: "LOGGED_IN_USER",
             payload: {
@@ -41,10 +47,16 @@ const LoginAuth = () => {
               _id: res.data._id,
             },
           }); 
+          dispatch({
+            type: "SET_AUTH_DRAWER_VISIBLE",
+            payload: false,
+          });
         })
+        
         setGoogleLoading(false);
-        toggleDialogFalse()
+        ToggleDialogFalse(false)
       });
+   
       AqCustomToast("succesfully logged in");
     } catch (error) {
       console.log(error);
@@ -54,8 +66,8 @@ const LoginAuth = () => {
   };
   return (
     <>
+    <button onClick={()=>ToggleDialogFalse}>hello</button>
       <div className="container-fluid">
-        {user}
         <h1>Login</h1>
         <hr />
         <form onSubmit={handleSubmit}>

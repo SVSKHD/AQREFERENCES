@@ -4,13 +4,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './index.css';
 import App from './App';
 
-import { createStore } from 'redux'
+import {configureStore} from "@reduxjs/toolkit"
 import {Provider} from "react-redux"
-import {composeWithDevTools} from "redux-devtools-extension"
 import rootReducer from "./reducers";
 
 // store
-const store = createStore(rootReducer, composeWithDevTools());
+const store = configureStore({reducer:rootReducer});
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));

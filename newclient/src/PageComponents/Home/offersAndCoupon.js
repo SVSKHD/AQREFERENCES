@@ -5,6 +5,7 @@ import { MdDashboard } from "react-icons/md";
 import { FaUser, FaSignOutAlt } from "react-icons/fa";
 import { useSelector } from "react-redux";
 import useAuthStore from "../../zustStore/Auth";
+import useUserStore from "../../zustStore/user";
 
 const AqOffersAndCoupon = () => {
   useEffect(() => {
@@ -23,7 +24,7 @@ const AqOffersAndCoupon = () => {
   const toggleSignupButton = () => {
     toggleDialogStatus();
   };
-
+  const userStore = useUserStore((state)=>state.userData)
   return (
     <>
       <div className="container mb-3">
@@ -45,11 +46,11 @@ const AqOffersAndCoupon = () => {
           </div>
 
           <div className="col-md-4 col-lg-4 col-xs-12 col-sm-12">
-            {user ? (
+            {userStore ? (
               <Card className="aq-offer-card aq-welcome-card text-white">
                 <Card.Body>
                   <Card.Title>Welcome Back</Card.Title>
-                  <Card.Text className="display-6">{user.name}</Card.Text>
+                  <Card.Text className="display-6">{userStore.name}</Card.Text>
                   <Button variant="link" className="text-white">
                     <MdDashboard size={25} />
                   </Button>

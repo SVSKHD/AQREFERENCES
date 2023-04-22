@@ -48,7 +48,7 @@ const AquaMapCategories = () => {
       >
         {categories.map((r, i) => (
           <>
-            <AqCategoryCard title={r.name} slug={r.slug} />
+            <AqCategoryCard key={i} title={r.name} slug={r.slug} />
           </>
         ))}
       </Carousel>

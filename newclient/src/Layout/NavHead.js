@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState , useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Button,
@@ -15,10 +15,15 @@ import AuthDialogLayout from "../Components/Auth/AuthDialogLayout";
 import LoginAuth from "../Components/Auth/LoginDialog";
 import SignupAuth from "../Components/Auth/SignupDialog";
 import useAuthStore from "../zustStore/Auth";
+import useUserStore from "../zustStore/user";
 
 function AquaNavHead() {
   //store
   const { user, cart } = useSelector((state) => ({ ...state }));
+  
+  
+ 
+
   const dispatch = useDispatch();
   //zustand store
   const userSignup = useAuthStore((state) => state.userSignupStatus);
@@ -28,6 +33,17 @@ function AquaNavHead() {
   const [signupTitle, setToggleSignupTitle] = useState(
     "No Account Yet..? Please Signup"
   );
+  const [userChange , setUserChange] = useState({})
+
+  //zustand
+  const userStore = useUserStore((state)=>state.userData)
+  //zustand observations
+  useEffect(()=>{
+    userStore? setUserChange(userStore) : setUserChange({}) 
+  },[userStore])
+
+ 
+
 
   const ToggleSignupStatus = () => {
     setToggleSignupTitle("Already A User..? Please Login");
@@ -63,7 +79,7 @@ function AquaNavHead() {
           {user ? (
             <>
               <button className="btn btn-dark">
-                <strong>{user.name}</strong>
+                <strong>{userChange?userChange.name : <div>hello</div>}</strong>
               </button>
             </>
           ) : (
@@ -71,25 +87,18 @@ function AquaNavHead() {
               <Button
                 variant="link"
                 className="text-dark"
-                onClick={() => setUserModal(true)}
+                onClick={() => {
+                  dispatch({
+                    type: "SET_AUTH_DRAWER_VISIBLE",
+                    payload: true,
+                  });
+                }}
               >
                 <FaUser size={25} />
               </Button>
             </>
           )}
 
-          <AuthDialogLayout show={userModal} hide={() => setUserModal(false)}>
-            <div className="container-fluid">
-              {userSignup ? <SignupAuth /> : <LoginAuth />}
-              <div className="text-center">
-                <button className="btn" onClick={ToggleSignupStatus}>
-                  {userSignup
-                    ? "Already A User..? Please Login"
-                    : "No Account Yet..? Please Signup"}
-                </button>
-              </div>
-            </div>
-          </AuthDialogLayout>
 
           <AqDrawer
             show={cartDrawer}
