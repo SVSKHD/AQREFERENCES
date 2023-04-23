@@ -3,9 +3,7 @@ import { Card, Button } from "react-bootstrap";
 import { getCoupons } from "../../services/coupon";
 import { MdDashboard } from "react-icons/md";
 import { FaUser, FaSignOutAlt } from "react-icons/fa";
-import { useSelector , useDispatch } from "react-redux";
-import useAuthStore from "../../zustStore/Auth";
-import useUserStore from "../../zustStore/user";
+import { useSelector, useDispatch } from "react-redux";
 
 const AqOffersAndCoupon = () => {
   useEffect(() => {
@@ -21,14 +19,13 @@ const AqOffersAndCoupon = () => {
     });
   };
 
-  const dispatch = useDispatch()
- const toggleDialogStatus = () =>{
-  dispatch({
-    type: "SET_AUTH_DRAWER_VISIBLE",
-    payload: true,
-  });
- }
-  const userStore = useUserStore((state)=>state.userData)
+  const dispatch = useDispatch();
+  const toggleDialogStatus = () => {
+    dispatch({
+      type: "SET_AUTH_DRAWER_VISIBLE",
+      payload: true,
+    });
+  };
   return (
     <>
       <div className="container mb-3">
@@ -50,7 +47,7 @@ const AqOffersAndCoupon = () => {
           </div>
 
           <div className="col-md-4 col-lg-4 col-xs-12 col-sm-12">
-            {user? (
+            {user ? (
               <Card className="aq-offer-card aq-welcome-card text-white">
                 <Card.Body>
                   <Card.Title>Welcome Back</Card.Title>

@@ -65,54 +65,63 @@ function App() {
     });
     return () => unsubscribe();
   }, [userStore, userDialog, dispatch]);
-
-  useEffect(() => {
-    ReactGA.initialize(process.env.REACT_APP_ANALYTICS);
-  }, []);
-
   const AquaRoutes = [
     {
       name: "Home",
       path: "/",
       component: <HomeIndex />,
+      show: true,
     },
     {
       name: "About",
       path: "/about",
       component: <AboutIndex />,
+      show: true,
     },
     {
       name: "Not-Found",
       path: "*",
       component: <NotFoundIndex />,
+      show: true,
     },
     {
       name: "Shop",
       path: "/shop",
       component: <ShopIndex />,
+      show: true,
     },
     {
       name: "Cart",
       path: "/cart",
       component: <CartIndex />,
+      show: true,
     },
     {
       name: "login",
       path: "/login",
       component: <LoginIndex />,
+      show: true,
     },
     {
       name: "Individual-Categories",
       path: "/category/:name",
       component: <IndividualCategoryIndex />,
+      show: true,
     },
     {
       name: "ui",
       path: "/ui",
       component: <UiIndex />,
-      show: process.env.REACT_APP_BUILD,
+      show: false,
     },
   ];
+
+  useEffect(() => {
+    let filteredRoutes = AquaRoutes.filter((a) => a.show == true);
+    console.log("filtered", filteredRoutes);
+    ReactGA.initialize(process.env.REACT_APP_ANALYTICS);
+  }, []);
+
   const customToastStyle = {
     borderRadius: "40px",
   };

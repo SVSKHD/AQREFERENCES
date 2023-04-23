@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { auth, Provider } from "../../config/firebase";
-import { signInWithPopup } from "firebase/auth";
+import { signInWithPopup, signInWithEmailAndPassword } from "firebase/auth";
 import { useDispatch, useSelector } from "react-redux";
 import AqCustomToast from "../toasts/toasts";
 import { createOrUpdateUser } from "../../services/auth";
@@ -27,7 +27,7 @@ const LoginAuth = () => {
     e.preventDefault();
     setLoading(true);
     try {
-      const result = await auth.signInWithEmailAndPassword(email, password);
+      const result = await signInWithEmailAndPassword(auth, email, password);
       const { user } = result;
       const idTokenResult = await user.getIdTokenResult();
 
@@ -43,6 +43,11 @@ const LoginAuth = () => {
               _id: res.data._id,
             },
           });
+          dispatch({
+            type: "SET_AUTH_DRAWER_VISIBLE",
+            payload: false,
+          });
+          AqCustomToast("Login Succesfull");
           setLoading(false);
         })
         .catch((err) => console.log(err));

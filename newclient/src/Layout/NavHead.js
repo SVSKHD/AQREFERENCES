@@ -17,6 +17,9 @@ import SignupAuth from "../Components/Auth/SignupDialog";
 import useAuthStore from "../zustStore/Auth";
 import useUserStore from "../zustStore/user";
 import AqNameIconButton from "../Components/Resuables/AqNameIconButton";
+import DrawerWelcomeCard from "../Components/cards/drawerWelcomeCard";
+import {auth} from "../config/firebase"
+import RegularToastExports from "../Components/toasts/regularToasts";
 
 function AquaNavHead() {
   //store
@@ -44,6 +47,20 @@ function AquaNavHead() {
     setToggleSignupTitle("Already A User..? Please Login");
     toggleSignup();
   };
+  //toasts
+  const {SuccesfullToast} = RegularToastExports()
+
+  const logout = () => {
+  console.log("logout")
+     auth.signOut()
+    dispatch({
+      type: "LOGOUT",
+      payload: null,
+    });
+    SuccesfullToast("Successfully Signed You Out")
+ 
+  
+  };
 
   return (
     <Navbar className="bg-white text-white" expand="lg">
@@ -60,7 +77,12 @@ function AquaNavHead() {
             <Nav.Link href="/about">About-us</Nav.Link>
           </Nav>
           <button
-            onClick={() => setCartDrawer(true)}
+            onClick={() => {
+              dispatch({
+                type: "SET_VISIBLE",
+                payload: true,
+              });
+            }}
             type="button"
             className="btn btn-link position-relative text-dark"
           >
@@ -73,7 +95,7 @@ function AquaNavHead() {
 
           {user ? (
             <>
-              <AqNameIconButton name={user.name}/>
+              <AqNameIconButton name={user.name} signout ={logout}/>
             </>
           ) : (
             <>
@@ -103,11 +125,21 @@ function AquaNavHead() {
                 <h4>cart items</h4>
                 <hr />
                 {user ? (
-                  <></>
+                  <>
+                  <DrawerWelcomeCard name={user.name} email={user.email} signOut={logout}/>
+                  </> 
                 ) : (
                   <>
                     <div className="text-center p-4">
-                      <Button variant="link" onClick={() => setUserModal(true)}>
+                      <Button
+                        variant="link"
+                        onClick={() => {
+                          dispatch({
+                            type: "SET_AUTH_DRAWER_VISIBLE",
+                            payload: true,
+                          });
+                        }}
+                      >
                         Please login here
                       </Button>
                     </div>

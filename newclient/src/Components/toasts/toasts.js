@@ -1,15 +1,12 @@
 import { toast } from "react-toastify"
 
-
-
-const AqCustomToast = (props) => {
-    const {message} = props
+const AqCustomToast = (message) => {
     return (
         toast(message, {
             className:"toast-class",
             bodyClassName:"toast-body-class",
             position: "bottom-center",
-            autoClose: 100000,
+            autoClose: 5000,
             hideProgressBar: false,
             closeOnClick: true,
             pauseOnHover: true,
