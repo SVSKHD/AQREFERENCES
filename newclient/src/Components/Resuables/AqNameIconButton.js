@@ -1,29 +1,17 @@
-const AqNameIconButton = (props) => {
-  const { name, icon, email } = props;
+import Button from 'react-bootstrap/Button';
+import DropdownButton from 'react-bootstrap/DropdownButton';
+import Dropdown from 'react-bootstrap/Dropdown';
+import ButtonGroup from 'react-bootstrap/ButtonGroup'
+function AqNameIconButton(props) {
+  const {name , email} = props
   return (
-    <>
-      <div className="btn-group" role="group">
-        <button
-          id="btnGroupDrop1"
-          type="button"
-          className="btn btn-secondary dropdown-toggle"
-          data-toggle="dropdown"
-          aria-haspopup="true"
-          aria-expanded="false"
-        >
-          {name} {icon}
-        </button>
-        <div className="dropdown-menu" aria-labelledby="btnGroupDrop1">
-          <a className="dropdown-item" href="#">
-            {email}
-          </a>
-          <a className="dropdown-item" href="#">
-            Dashboard
-          </a>
-        </div>
-      </div>
-    </>
+    <ButtonGroup>
+      <DropdownButton title={name} variant='dark' id="bg-nested-dropdown">
+        <Dropdown.Item eventKey="1">Dropdown link</Dropdown.Item>
+        <Dropdown.Item eventKey="2">Dropdown link</Dropdown.Item>
+      </DropdownButton>
+    </ButtonGroup>
   );
-};
+}
 
-export default AqNameIconButton
+export default AqNameIconButton;

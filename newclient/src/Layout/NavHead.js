@@ -1,4 +1,4 @@
-import { useState , useEffect} from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import {
   Button,
@@ -16,13 +16,11 @@ import LoginAuth from "../Components/Auth/LoginDialog";
 import SignupAuth from "../Components/Auth/SignupDialog";
 import useAuthStore from "../zustStore/Auth";
 import useUserStore from "../zustStore/user";
+import AqNameIconButton from "../Components/Resuables/AqNameIconButton";
 
 function AquaNavHead() {
   //store
   const { user, cart } = useSelector((state) => ({ ...state }));
-  
-  
- 
 
   const dispatch = useDispatch();
   //zustand store
@@ -33,17 +31,14 @@ function AquaNavHead() {
   const [signupTitle, setToggleSignupTitle] = useState(
     "No Account Yet..? Please Signup"
   );
-  const [userChange , setUserChange] = useState({})
+  const [userChange, setUserChange] = useState({});
 
   //zustand
-  const userStore = useUserStore((state)=>state.userData)
+  const userStore = useUserStore((state) => state.userData);
   //zustand observations
-  useEffect(()=>{
-    userStore? setUserChange(userStore) : setUserChange({}) 
-  },[userStore])
-
- 
-
+  useEffect(() => {
+    userStore ? setUserChange(userStore) : setUserChange({});
+  }, [userStore]);
 
   const ToggleSignupStatus = () => {
     setToggleSignupTitle("Already A User..? Please Login");
@@ -78,9 +73,7 @@ function AquaNavHead() {
 
           {user ? (
             <>
-              <button className="btn btn-dark">
-                <strong>{userChange?userChange.name : <div>hello</div>}</strong>
-              </button>
+              <AqNameIconButton name={user.name}/>
             </>
           ) : (
             <>
@@ -98,7 +91,6 @@ function AquaNavHead() {
               </Button>
             </>
           )}
-
 
           <AqDrawer
             show={cartDrawer}

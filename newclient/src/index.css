@@ -2,11 +2,21 @@
 
 /* root */
 :root{
-  --bs-body-font-family:"Mulish" , sans-serif !important
+  --bs-body-font-family:"Mulish" , sans-serif !important;
 }
 /* body */
 body {
   font-family: "Mulish",sans-serif !important;
+}
+
+/* toast classes */
+.toast-class{
+  border-radius: 5px !important;
+  padding: 2px !important;
+  min-height: 35px!important;
+}
+.toast-body-class{
+
 }
 
 /* layout */

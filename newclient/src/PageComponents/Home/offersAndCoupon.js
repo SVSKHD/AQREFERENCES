@@ -46,11 +46,11 @@ const AqOffersAndCoupon = () => {
           </div>
 
           <div className="col-md-4 col-lg-4 col-xs-12 col-sm-12">
-            {userStore ? (
+            {user? (
               <Card className="aq-offer-card aq-welcome-card text-white">
                 <Card.Body>
                   <Card.Title>Welcome Back</Card.Title>
-                  <Card.Text className="display-6">{userStore.name}</Card.Text>
+                  <Card.Text className="display-6">{user.name}</Card.Text>
                   <Button variant="link" className="text-white">
                     <MdDashboard size={25} />
                   </Button>
