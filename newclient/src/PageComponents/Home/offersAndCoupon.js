@@ -3,7 +3,7 @@ import { Card, Button } from "react-bootstrap";
 import { getCoupons } from "../../services/coupon";
 import { MdDashboard } from "react-icons/md";
 import { FaUser, FaSignOutAlt } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useSelector , useDispatch } from "react-redux";
 import useAuthStore from "../../zustStore/Auth";
 import useUserStore from "../../zustStore/user";
 
@@ -20,10 +20,14 @@ const AqOffersAndCoupon = () => {
       setCoupons(res.data);
     });
   };
-  const toggleDialogStatus = useAuthStore((state) => state.toggleDialog);
-  const toggleSignupButton = () => {
-    toggleDialogStatus();
-  };
+
+  const dispatch = useDispatch()
+ const toggleDialogStatus = () =>{
+  dispatch({
+    type: "SET_AUTH_DRAWER_VISIBLE",
+    payload: true,
+  });
+ }
   const userStore = useUserStore((state)=>state.userData)
   return (
     <>
@@ -70,7 +74,7 @@ const AqOffersAndCoupon = () => {
                 <Card.Body>
                   <Card.Text className="text-center">
                     <button
-                      onClick={() => toggleDialogStatus}
+                      onClick={toggleDialogStatus}
                       className="btn btn-lg text-white"
                     >
                       Please Login for your orders and many more
