@@ -20,6 +20,7 @@ import ShopIndex from "./Pages/ShopIndex";
 import CartIndex from "./Pages/cartIndex";
 import LoginIndex from "./Pages/LoginIndex";
 import UiIndex from "./Pages/uiIndex";
+import DashboardIndex from "./Pages/dashboardIndex";
 //notfound
 import NotFoundIndex from "./Pages/NotFoundIndex";
 //
@@ -114,6 +115,12 @@ function App() {
       component: <UiIndex />,
       show: false,
     },
+    {
+      name:"Dashboard",
+      path:"/dashboard/:name",
+      component:<DashboardIndex/>,
+      show:true
+    }
   ];
 
   useEffect(() => {

@@ -9,6 +9,11 @@ body {
   font-family: "Mulish",sans-serif !important;
 }
 
+/* dashboard navs */
+.center-navbar{
+  text-align: center;
+}
+
 /* toast classes */
 .toast-class{
   border-radius: 5px !important;
