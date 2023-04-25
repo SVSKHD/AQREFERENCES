@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { auth } from "../../config/firebase";
+import { auth , Provider} from "../../config/firebase";
+import { signInWithPopup } from "firebase/auth";
 import { createOrUpdateUser } from "../../services/auth";
 import { useDispatch } from "react-redux";
 import AqCustomToast from "../toasts/toasts";
@@ -49,7 +50,42 @@ const SignupAuth = () => {
       setLoading(false);
     }
   };
-  const handleGoogleSignup = async () => {};
+  const handleGoogleSignup = async (e) => {
+    e.preventDefault();
+    setGoogleLoading(true);
+    try {
+      await signInWithPopup(auth, Provider).then(async (data) => {
+        const { user } = data;
+        const idTokenResult = await user.getIdTokenResult();
+        console.log(idTokenResult);
+        await createOrUpdateUser(idTokenResult.token).then((res) => {
+          dispatch({
+            type: "LOGGED_IN_USER",
+            payload: {
+              name: res.data.name,
+              email: res.data.email,
+              token: idTokenResult.token,
+              role: res.data.role,
+              _id: res.data._id,
+            },
+          });
+          dispatch({
+            type: "SET_AUTH_DRAWER_VISIBLE",
+            payload: false,
+          });
+        });
+
+        setGoogleLoading(false);
+      });
+
+      AqCustomToast("succesfully logged in");
+    } catch (error) {
+      console.log(error);
+      setGoogleLoading(false);
+      AqCustomToast("sorry");
+    }
+
+  };
   return (
     <>
       <div className="container-fluid">
@@ -93,9 +129,14 @@ const SignupAuth = () => {
                 <button
                   onClick={handleGoogleSignup}
                   class="btn text-danger"
-                  type="submit"
                 >
-                  <FaGoogle size={25} />
+                  {googleLoading ? (
+                    <div class="spinner-border text-danger" role="status">
+                      <span class="visually-hidden">Loading...</span>
+                    </div>
+                  ) : (
+                    <FaGoogle size={25} />
+                  )}
                 </button>
               </div>
             </div>
