@@ -25,6 +25,7 @@ import DashboardIndex from "./Pages/dashboardIndex";
 import NotFoundIndex from "./Pages/NotFoundIndex";
 //
 import IndividualCategoryIndex from "./Pages/indivdualCategoryIndex";
+import IndividualProductIndex from "./Pages/IndividualProductIndex";
 //resuables
 import AuthCommonDialog from "./PageComponents/Auth/AuthCommonDialog";
 import AuthDrawer from "./PageComponents/AuthDrawer/AuthDrawer";
@@ -107,6 +108,12 @@ function App() {
       name: "Individual-Categories",
       path: "/category/:name",
       component: <IndividualCategoryIndex />,
+      show: true,
+    },
+    {
+      name: "Individual-Product",
+      path: "/product/:name",
+      component: <IndividualProductIndex />,
       show: true,
     },
     {

@@ -1,6 +1,6 @@
 import { useState } from "react";
-
-import { Button, Carousel, Card } from "react-bootstrap";
+import {useNavigate} from "react-router-dom"
+import { Button, Carousel, Card, Nav } from "react-bootstrap";
 import { AiFillHeart, AiOutlineHeart } from "react-icons/ai";
 import { FaEye } from "react-icons/fa";
 import { IoCartOutline, IoCart } from "react-icons/io5";
@@ -20,6 +20,7 @@ const ProductCard = ({ r }) => {
   const [fav, setFav] = useState(false);
   const [toast, setToast] = useState(false)
 
+  const Navigate = useNavigate()
   const { user, cart } = useSelector((state) => ({ ...state }));
   const dispatch = useDispatch();
 
@@ -29,6 +30,11 @@ const ProductCard = ({ r }) => {
     Cart?console.log("true" , Cart) : console.log("false" , Cart)
     handleAddToCart(Cart)
   }
+
+  const NavigateToProducts = (slug) =>{
+     Navigate(`/product/${slug}`)
+  }
+
   const handleAddToCart = (val) => {
       setCart(<IoCart size={25}/>)
       AqCustomToast("Succesfully Added to Cart 🫀")
@@ -97,7 +103,7 @@ const ProductCard = ({ r }) => {
             <Card.Text className="text-success">
               <h6>₹{price}</h6>
             </Card.Text>
-            <Button variant="link">
+            <Button variant="link" onClick={()=>NavigateToProducts(slug)}>
               <FaEye size={25} />
             </Button>
             <Button variant="link" onClick={handleCartState}>
