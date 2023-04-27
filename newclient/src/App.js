@@ -47,7 +47,9 @@ function App() {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
         const idTokenResult = await user.getIdTokenResult();
-        currentUser(idTokenResult)
+        // console.log("user", user);
+
+        currentUser(idTokenResult.token)
           .then((res) => {
             dispatch({
               type: "LOGGED_IN_USER",
@@ -60,13 +62,12 @@ function App() {
               },
             });
           })
-          .catch((err) => {
-            console.log(err);
-          });
+          .catch((err) => console.log(err));
       }
     });
+    // cleanup
     return () => unsubscribe();
-  }, [userStore, userDialog, dispatch]);
+  }, [dispatch]);
   const AquaRoutes = [
     {
       name: "Home",
