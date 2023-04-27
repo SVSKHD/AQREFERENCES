@@ -17,6 +17,7 @@ import "react-multi-carousel/lib/styles.css";
 import HomeIndex from "./Pages/HomeIndex";
 import AboutIndex from "./Pages/AboutIndex";
 import ShopIndex from "./Pages/ShopIndex";
+import CompareIndex from "./Pages/CompareIndex";
 import CartIndex from "./Pages/cartIndex";
 import LoginIndex from "./Pages/LoginIndex";
 import UiIndex from "./Pages/uiIndex";
@@ -100,6 +101,12 @@ function App() {
       show: true,
     },
     {
+      name: "Compare",
+      path: "/compare",
+      component: <CompareIndex />,
+      show: true,
+    },
+    {
       name: "login",
       path: "/login",
       component: <LoginIndex />,
@@ -124,11 +131,11 @@ function App() {
       show: false,
     },
     {
-      name:"Dashboard",
-      path:"/dashboard/:name",
-      component:<DashboardIndex/>,
-      show:true
-    }
+      name: "Dashboard",
+      path: "/dashboard/:name",
+      component: <DashboardIndex />,
+      show: true,
+    },
   ];
 
   useEffect(() => {

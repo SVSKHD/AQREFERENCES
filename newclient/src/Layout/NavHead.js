@@ -18,7 +18,7 @@ import useAuthStore from "../zustStore/Auth";
 import useUserStore from "../zustStore/user";
 import AqNameIconButton from "../Components/Resuables/AqNameIconButton";
 import DrawerWelcomeCard from "../Components/cards/drawerWelcomeCard";
-import {auth} from "../config/firebase"
+import { auth } from "../config/firebase";
 import RegularToastExports from "../Components/toasts/regularToasts";
 
 function AquaNavHead() {
@@ -48,18 +48,15 @@ function AquaNavHead() {
     toggleSignup();
   };
   //toasts
-  const {SuccesfullToast} = RegularToastExports()
+  const { SuccesfullToast } = RegularToastExports();
 
   const logout = () => {
-  console.log("logout")
-     auth.signOut()
+    auth.signOut();
     dispatch({
       type: "LOGOUT",
       payload: null,
     });
-    SuccesfullToast("Successfully Signed You Out")
- 
-  
+    SuccesfullToast("Successfully Signed You Out");
   };
 
   return (
@@ -74,6 +71,7 @@ function AquaNavHead() {
             navbarScroll
           >
             <Nav.Link href="/shop">Shop</Nav.Link>
+            <Nav.Link href="/compare">Compare</Nav.Link>
             <Nav.Link href="/about">About-us</Nav.Link>
           </Nav>
           <button
@@ -95,7 +93,7 @@ function AquaNavHead() {
 
           {user ? (
             <>
-              <AqNameIconButton name={user.name} signout ={logout}/>
+              <AqNameIconButton name={user.name} signout={logout} />
             </>
           ) : (
             <>
@@ -126,8 +124,12 @@ function AquaNavHead() {
                 <hr />
                 {user ? (
                   <>
-                  <DrawerWelcomeCard name={user.name} email={user.email} signOut={logout}/>
-                  </> 
+                    <DrawerWelcomeCard
+                      name={user.name}
+                      email={user.email}
+                      signOut={logout}
+                    />
+                  </>
                 ) : (
                   <>
                     <div className="text-center p-4">

@@ -28,7 +28,7 @@ const LoginAuthPageComponent = () => {
       await signInWithPopup(auth, Provider).then((data) => {
         console.log("data", data);
       });
-      Navigate("/");
+      Navigate("/cart");
       AqCustomToast("succesfully logged in");
     } catch (error) {
       console.log(error);

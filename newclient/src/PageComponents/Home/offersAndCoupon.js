@@ -4,19 +4,30 @@ import { getCoupons } from "../../services/coupon";
 import { MdDashboard } from "react-icons/md";
 import { FaUser, FaSignOutAlt } from "react-icons/fa";
 import { useSelector, useDispatch } from "react-redux";
-
+import { auth } from "../../config/firebase";
+import RegularToastExports from "../../Components/toasts/regularToasts";
 const AqOffersAndCoupon = () => {
   useEffect(() => {
     populateCoupons();
   }, []);
 
   const [coupons, setCoupons] = useState([]);
+  const { SuccesfullToast } = RegularToastExports();
 
   const { user } = useSelector((state) => ({ ...state }));
   const populateCoupons = () => {
     getCoupons().then((res) => {
       setCoupons(res.data);
     });
+  };
+
+  const logout = () => {
+    auth.signOut();
+    dispatch({
+      type: "LOGOUT",
+      payload: null,
+    });
+    SuccesfullToast("Successfully Signed You Out");
   };
 
   const dispatch = useDispatch();
@@ -58,7 +69,11 @@ const AqOffersAndCoupon = () => {
                   <Button variant="link" className="text-white">
                     <FaUser size={25} />
                   </Button>
-                  <Button variant="link" className="text-white">
+                  <Button
+                    variant="link"
+                    className="text-white"
+                    onClick={logout}
+                  >
                     <FaSignOutAlt size={25} />
                   </Button>
                 </Card.Body>

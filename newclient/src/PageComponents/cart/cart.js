@@ -32,7 +32,7 @@ const CartComponent = () => {
     user ? (
       <>
         <div className="mb-2">
-          <div className="d-grid gap-2 container-fluid">
+          <div className="d-grid gap-2 container-fluid mb-2">
             <Button variant="primary" size="sm">
               Proceeed to Checkout
             </Button>
@@ -101,7 +101,7 @@ const CartComponent = () => {
 
               </div>
               <div>
-                {showUserButtons()}
+                {showUserButtons(user)}
 
                 <div className="card shadow-lg">
                   <div className="card-body">
