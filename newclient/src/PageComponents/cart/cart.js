@@ -20,6 +20,8 @@ const CartComponent = () => {
       payload: true,
     });
   };
+
+  
   const showCartItems = (cart) => (
     <>
       {cart.map((r, i) => (
@@ -44,7 +46,7 @@ const CartComponent = () => {
             </Button>
           </div>
           <div className="d-grid gap-2 container-fluid">
-            <Button variant="primary" size="sm">
+            <Button variant="primary" size="sm" disabled={!cart.length}>
               Pay Cash On Delivery
             </Button>
           </div>
