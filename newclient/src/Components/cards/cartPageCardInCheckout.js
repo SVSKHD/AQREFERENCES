@@ -1,14 +1,13 @@
-
-
 import React from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch  , useSelector} from "react-redux";
 import RegularToastExports from "../toasts/regularToasts";
-import {FaTrash} from "react-icons/fa"
+import { FaTrash, FaHeart } from "react-icons/fa";
+import {addToWishlist} from "../../services/user"
 
 const CartPageComponent = ({ p }) => {
   let dispatch = useDispatch();
-  const {ErrorToast} = RegularToastExports()
-
+  const { ErrorToast , SuccesfullToast} = RegularToastExports();
+  const { user, cart } = useSelector((state) => ({ ...state }));
   const handleColorChange = (e) => {
     console.log("color changed", e.target.value);
 
@@ -38,7 +37,7 @@ const CartPageComponent = ({ p }) => {
     let count = e.target.value < 1 ? 1 : e.target.value;
 
     if (count > p.quantity) {
-      ErrorToast(`Max available quantity: ${p.quantity}`)
+      ErrorToast(`Max available quantity: ${p.quantity}`);
       return;
     }
 
@@ -86,6 +85,14 @@ const CartPageComponent = ({ p }) => {
     }
   };
 
+  const handleAddToWishlist = (e) => {
+    e.preventDefault();
+    addToWishlist(p._id, user.token).then((res) => {
+      console.log("ADDED TO WISHLIST", res.data);
+      SuccesfullToast("Added to wishlist");
+    });
+  };
+
   return (
     <div>
       <div className="card mb-3 shadow-lg">
@@ -111,7 +118,7 @@ const CartPageComponent = ({ p }) => {
                   onClick={handleRemove}
                   id="button-addon1"
                 >
-                  <FaTrash size={25}/>
+                  <FaTrash size={25} />
                 </button>
                 <input
                   type="number"
@@ -122,6 +129,14 @@ const CartPageComponent = ({ p }) => {
                   aria-label="Example text with button addon"
                   aria-describedby="button-addon1"
                 />
+                <button
+                  className="btn btn-outline-danger"
+                  type="button"
+                  onClick={handleAddToWishlist}
+                  id="button-addon1"
+                >
+                  <FaHeart size={25} />
+                </button>
               </div>
             </div>
           </div>

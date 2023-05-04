@@ -22,6 +22,7 @@ import CartIndex from "./Pages/cartIndex";
 import LoginIndex from "./Pages/LoginIndex";
 import UiIndex from "./Pages/uiIndex";
 import DashboardIndex from "./Pages/dashboardIndex";
+import CheckoutIndex from "./Pages/checkoutIndex";
 //notfound
 import NotFoundIndex from "./Pages/NotFoundIndex";
 //
@@ -98,6 +99,12 @@ function App() {
       name: "Cart",
       path: "/cart",
       component: <CartIndex />,
+      show: true,
+    },
+    {
+      name: "Checkout",
+      path: "/checkout",
+      component: <CheckoutIndex />,
       show: true,
     },
     {
