@@ -26,12 +26,7 @@ const CartComponent = () => {
     <>
       {cart.map((r, i) => (
         <div key={i}>
-          <CartPageComponent
-            title={r.title}
-            image={r.images ? r.images[0].url : AQ}
-            description={r.description}
-            count={r.count}
-          />
+          <CartPageComponent p={r}/>
         </div>
       ))}
     </>

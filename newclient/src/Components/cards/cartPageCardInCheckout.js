@@ -1,17 +1,44 @@
-import { FaRegCheckCircle, FaRegTimesCircle } from "react-icons/fa";
-import { ButtonGroup, Button, InputGroup, Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
-import AqCustomToast from "../toasts/toasts";
 
-const CartPageComponent = (props) => {
-  const dispatch = useDispatch();
+
+import React from "react";
+import { useDispatch } from "react-redux";
+import RegularToastExports from "../toasts/regularToasts";
+import {FaTrash} from "react-icons/fa"
+
+const CartPageComponent = ({ p }) => {
+  let dispatch = useDispatch();
+  const {ErrorToast} = RegularToastExports()
+
+  const handleColorChange = (e) => {
+    console.log("color changed", e.target.value);
+
+    let cart = [];
+    if (typeof window !== "undefined") {
+      if (localStorage.getItem("cart")) {
+        cart = JSON.parse(localStorage.getItem("cart"));
+      }
+
+      cart.map((product, i) => {
+        if (product._id === p._id) {
+          cart[i].color = e.target.value;
+        }
+      });
+
+      //  console.log('cart udpate color', cart)
+      localStorage.setItem("cart", JSON.stringify(cart));
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: cart,
+      });
+    }
+  };
 
   const handleQuantityChange = (e) => {
     // console.log("available quantity", p.quantity);
     let count = e.target.value < 1 ? 1 : e.target.value;
 
-    if (count > props.quantity) {
-      AqCustomToast(`Max available quantity: ${props.quantity}`);
+    if (count > p.quantity) {
+      ErrorToast(`Max available quantity: ${p.quantity}`)
       return;
     }
 
@@ -23,7 +50,7 @@ const CartPageComponent = (props) => {
       }
 
       cart.map((product, i) => {
-        if (product._id == props._id) {
+        if (product._id == p._id) {
           cart[i].count = count;
         }
       });
@@ -46,7 +73,7 @@ const CartPageComponent = (props) => {
       }
       // [1,2,3,4,5]
       cart.map((product, i) => {
-        if (product._id === props._id) {
+        if (product._id === p._id) {
           cart.splice(i, 1);
         }
       });
@@ -58,72 +85,50 @@ const CartPageComponent = (props) => {
       });
     }
   };
+
   return (
-    <>
-      <div class="card mb-3 shadow-lg">
-        <div class="row g-0">
-          <div class="col-md-4">
+    <div>
+      <div className="card mb-3 shadow-lg">
+        <div className="row g-0">
+          <div className="col-md-4">
             <img
-              src={props.image}
-              class="img-fluid rounded-start"
-              alt={props.title}
+              src={p.images[0].url}
+              className="img-fluid rounded-start"
+              alt={p.title}
             />
           </div>
-          <div class="col-md-8">
-            <div class="card-body">
-              <h5 class="card-title">{props.title}</h5>
-              <p class="card-text">{props.description}</p>
-              <InputGroup>
-                <Form.Control
+          <div className="col-md-8">
+            <div className="card-body">
+              <h5 className="card-title">{p.title}</h5>
+
+              <p className="card-text">
+                <small className="text-muted">{p.description}</small>
+              </p>
+              <div className="input-group mb-3">
+                <button
+                  className="btn btn-outline-danger"
+                  type="button"
+                  onClick={handleRemove}
+                  id="button-addon1"
+                >
+                  <FaTrash size={25}/>
+                </button>
+                <input
+                  type="number"
+                  className="form-control"
                   placeholder="Quantity"
-                  aria-label="Recipient's username with two button addons"
-                  value={props.count}
+                  value={p.count}
                   onChange={handleQuantityChange}
+                  aria-label="Example text with button addon"
+                  aria-describedby="button-addon1"
                 />
-                <Button variant="outline-dark">Button</Button>
-                <Button variant="outline-dark">Button</Button>
-              </InputGroup>
-              <div className="pt-2">
-              {props.shipping === "Yes" ? (
-                <h5>Shipping : <FaRegTimesCircle size={25} className="text-danger" /></h5>
-              ) : (
-               <h5>Shipping : <FaRegCheckCircle size={25} className="text-success" /></h5> 
-              )}
               </div>
-              {/* <ButtonGroup aria-label="Basic example">
-                <Button variant="link">
-                  <FaMinus size={20} />
-                </Button>
-                <Button variant="link" className="aq-text-decorate">
-                  {props.count}
-                </Button>
-                <Button variant="link">
-                  <FaPlus size={20} />
-                </Button>
-              </ButtonGroup> */}
             </div>
           </div>
         </div>
       </div>
-      {/* <div className="card mb-3 shadow-lg">
-                <div className="row g-0">
-                    <div className="col-md-4">
-                        <img src={props.image} className="rounded-start" height="200" alt={props.title}/>
-                    </div>
-                    <div className="col-md-8">
-                        <div className="card-body">
-                            <h5 className="card-title aq-cart-page-title">
-
-                                {props.title}
-
-                            </h5>
-                            <p className="card-text">{props.description}</p>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div> */}
-    </>
+    </div>
   );
 };
+
 export default CartPageComponent;
