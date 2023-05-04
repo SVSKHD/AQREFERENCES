@@ -1,12 +1,12 @@
 import React from "react";
-import { useDispatch  , useSelector} from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import RegularToastExports from "../toasts/regularToasts";
 import { FaTrash, FaHeart } from "react-icons/fa";
-import {addToWishlist} from "../../services/user"
+import { addToWishlist } from "../../services/user";
 
 const CartPageComponent = ({ p }) => {
   let dispatch = useDispatch();
-  const { ErrorToast , SuccesfullToast} = RegularToastExports();
+  const { ErrorToast, SuccesfullToast } = RegularToastExports();
   const { user, cart } = useSelector((state) => ({ ...state }));
   const handleColorChange = (e) => {
     console.log("color changed", e.target.value);
