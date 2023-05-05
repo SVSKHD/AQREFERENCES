@@ -27,6 +27,14 @@ const ComparePage = () => {
       </>
     );
   };
+  const TrendingProductsLoad = () =>{
+    return(
+      <>
+      <h1>Trending Products Load</h1>
+      <hr/>
+      </>
+    )
+  }
   return (
     <>
       <AquaLayout>
@@ -34,6 +42,7 @@ const ComparePage = () => {
           <UserCartAndWish
             cart={<CartProductsLoad />}
             wishlist={<WishListProductsLoad />}
+            trending={<TrendingProductsLoad/>}
           />
           <h1 className="text-center display-2">Compare Your Products</h1>
         </div>

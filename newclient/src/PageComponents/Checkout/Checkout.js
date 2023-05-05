@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux"
-import { OverlayTrigger, Tooltip } from "react-bootstrap"
-import { useNavigate } from "react-router-dom"
+import { useDispatch, useSelector } from "react-redux";
+import { OverlayTrigger, Tooltip } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import {
   getUserCart,
   emptyUserCart,
@@ -9,7 +9,7 @@ import {
   applyCoupon,
   createCashOrderForUser,
 } from "../../services/user";
-import { FaTrash } from "react-icons/fa"
+import { FaTrash } from "react-icons/fa";
 import RegularToastExports from "../../Components/toasts/regularToasts";
 import AquaLayout from "../../Layout/Layout";
 
@@ -23,11 +23,17 @@ const CheckoutPageComponent = ({ history }) => {
   const [totalAfterDiscount, setTotalAfterDiscount] = useState(0);
   const [discountError, setDiscountError] = useState("");
 
-  const dispatch = useDispatch()
-  const { SuccesfullToast } = RegularToastExports()
+  const dispatch = useDispatch();
+  const { SuccesfullToast } = RegularToastExports();
   const { cart, user, COD } = useSelector((state) => ({ ...state }));
-  const Navigate = useNavigate()
+  const Navigate = useNavigate();
+
   useEffect(() => {
+    getUserCart(user.token).then((res) => {
+      console.log("user cart res", JSON.stringify(res.data, null, 4));
+      setProducts(res.data.products);
+      setTotal(res.data.cartTotal);
+    });
   }, []);
 
   const emptyCart = () => {
@@ -55,10 +61,30 @@ const CheckoutPageComponent = ({ history }) => {
     saveUserAddress(user.token, address).then((res) => {
       if (res.data.ok) {
         setAddressSaved(true);
-        toast.success("Address saved");
+        SuccesfullToast("Address saved");
       }
     });
   };
+
+  const showProductSummary = () => (
+    <div className="card shadow-lg">
+      <ol class="list-group list-group-flush">
+        {products.map((p, i) => (
+          <li class="list-group-item d-flex justify-content-between align-items-start">
+            <div class="ms-2 me-auto">
+              <div class="fw-bold">{p.product.title}</div>({p.color}) x{" "}
+              {p.count}
+            </div>
+            <h3>
+              <span class="badge bg-success">
+                ₹ {p.product.price * p.count}
+              </span>
+            </h3>
+          </li>
+        ))}
+      </ol>
+    </div>
+  );
 
   return (
     <>
@@ -68,11 +94,27 @@ const CheckoutPageComponent = ({ history }) => {
             <div className="col-md-8 col-lg-8 col-xs-12 col-sm-12">
               <div className="card shadow-lg">
                 <div className="card-body">
-                  <h5 className="card-title display-6">{user ? `${user.name} Details` : "User Details"}</h5>
-                  <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                  <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" className="card-link">Card link</a>
-                  <a href="#" className="card-link">Another link</a>
+                  <h5 className="card-title display-6">
+                    {user ? `${user.name} Details` : "User Details"}
+                  </h5>
+                  <div className="row">
+                    <div className="col">
+                      <div class="mb-3">
+                        <label
+                          for="exampleFormControlTextarea1"
+                          class="form-label"
+                        >
+                          Enter Your Address
+                        </label>
+                        <textarea
+                          class="form-control"
+                          id="exampleFormControlTextarea1"
+                          rows="3"
+                        ></textarea>
+                      </div>
+                    </div>
+                    <div className="col"></div>
+                  </div>
                 </div>
               </div>
             </div>
@@ -81,28 +123,40 @@ const CheckoutPageComponent = ({ history }) => {
                 <div className="card-body">
                   <h5 className="card-title display-6">Order Details</h5>
                   <div className="input-group mb-4">
-                    <input type="text" className="form-control" placeholder="Coupon Code" aria-label="Recipient's username with two button addons" />
-                    <button className="btn btn-outline-dark" type="button">Submit Coupon</button>
+                    <input
+                      type="text"
+                      className="form-control"
+                      placeholder="Coupon Code"
+                      aria-label="Recipient's username with two button addons"
+                    />
+                    <button className="btn btn-outline-dark" type="button">
+                      Submit Coupon
+                    </button>
                   </div>
-                  <div className="d-grid gap-2 mb-2" >
+                  <div className="d-grid gap-2 mb-2">
+                    <div>{showProductSummary()}</div>
                     <OverlayTrigger
                       placement="bottom"
-                      overlay={
-                        <Tooltip>
-                          clear cart
-                        </Tooltip>
-                      }
+                      overlay={<Tooltip>clear cart</Tooltip>}
                     >
                       <button onClick={emptyCart} className="btn btn-danger">
                         <FaTrash size={25} />
                       </button>
                     </OverlayTrigger>
-
                   </div>
-                  <h6 className="card-subtitle mb-2 text-body-secondary">Card subtitle</h6>
-                  <p className="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                  <a href="#" className="card-link">Card link</a>
-                  <a href="#" className="card-link">Another link</a>
+                  <h6 className="card-subtitle mb-2 text-body-secondary">
+                    Card subtitle
+                  </h6>
+                  <p className="card-text">
+                    Some quick example text to build on the card title and make
+                    up the bulk of the card's content.
+                  </p>
+                  <a href="#" className="card-link">
+                    Card link
+                  </a>
+                  <a href="#" className="card-link">
+                    Another link
+                  </a>
                 </div>
               </div>
             </div>
@@ -114,11 +168,12 @@ const CheckoutPageComponent = ({ history }) => {
 };
 export default CheckoutPageComponent;
 
-
-{/* <InputGroup classNameName="mb-3">
+{
+  /* <InputGroup classNameName="mb-3">
                       <Form.Control
                         aria-label="Dollar amount (with dot and two decimal places)"
                         placeholder="Enter Coupon"
                       />
                       <Button variant="light">Submit</Button>
-                    </InputGroup> */}
+                    </InputGroup> */
+}
