@@ -74,6 +74,7 @@ function AquaNavHead() {
             <Nav.Link href="/compare">Compare</Nav.Link>
             <Nav.Link href="/about">About-us</Nav.Link>
           </Nav>
+          <div className="me-3">
           <button
             onClick={() => {
               dispatch({
@@ -85,12 +86,12 @@ function AquaNavHead() {
             className="btn btn-link position-relative text-dark"
           >
             <FaCartArrowDown size={25} />
-            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
               {cart.length}
-              <span className="visually-hidden">unread messages</span>
+              <span class="visually-hidden">unread messages</span>
             </span>
           </button>
-
+          </div>
           {user ? (
             <>
               <AqNameIconButton name={user.name} signout={logout} />
