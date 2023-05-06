@@ -17,6 +17,7 @@ const AqHomeCarousel = () => {
             height="400"
           />
           <Carousel.Caption className="text-start aq-home-carousel">
+          <Button>Hello First</Button>
             <h3>First slide label</h3>
             <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
           </Carousel.Caption>

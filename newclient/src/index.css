@@ -1,28 +1,28 @@
 @import url('https://fonts.googleapis.com/css2?family=Mulish:wght@600&display=swap');
 
 /* root */
-:root{
-  --bs-body-font-family:"Mulish" , sans-serif !important;
+:root {
+  --bs-body-font-family: "Mulish", sans-serif !important;
 }
+
 /* body */
 body {
-  font-family: "Mulish",sans-serif !important;
+  font-family: "Mulish", sans-serif !important;
 }
 
 /* dashboard navs */
-.center-navbar{
+.center-navbar {
   text-align: center;
 }
 
 /* toast classes */
-.toast-class{
+.toast-class {
   border-radius: 5px !important;
   padding: 2px !important;
-  min-height: 35px!important;
+  min-height: 35px !important;
 }
-.toast-body-class{
 
-}
+.toast-body-class {}
 
 /* layout */
 .aqua-footer {
@@ -53,6 +53,7 @@ body {
 
 .aq-home-carousel {
   bottom: 2rem !important;
+  right: 20rem !important;
 }
 
 .aq-offer-card {
@@ -62,17 +63,23 @@ body {
 
 
 .aq-welcome-card {
-  background: #0f0c29;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #24243e, #302b63, #0f0c29); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
+  background: #0f0c29;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #24243e, #302b63, #0f0c29);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #24243e, #302b63, #0f0c29);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
-.aq-coupon-card{
-  background: #780206;  /* fallback for old browsers */
-  background: -webkit-linear-gradient(to right, #061161, #780206);  /* Chrome 10-25, Safari 5.1-6 */
-  background: linear-gradient(to right, #061161, #780206); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
-  
+.aq-coupon-card {
+  background: #780206;
+  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #061161, #780206);
+  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #061161, #780206);
+  /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
 }
 
 
@@ -105,19 +112,19 @@ body {
 }
 
 
-.aq-cart-page-title{
-  font-weight: bold!important;
+.aq-cart-page-title {
+  font-weight: bold !important;
 }
 
-.aq-text-decorate{
-  text-decoration: none!important;
+.aq-text-decorate {
+  text-decoration: none !important;
 }
 
-.aq-auth-margin{
+.aq-auth-margin {
   margin-bottom: 280px;
 }
 
-.aq-login-page{
+.aq-login-page {
   width: 700px;
 }
 
@@ -139,11 +146,11 @@ body {
   top: -13px;
 }
 
-.aq-category-scroll-card{
+.aq-category-scroll-card {
   height: 65px;
 }
 
 
-.aq-image{
+.aq-image {
   height: 350px;
 }

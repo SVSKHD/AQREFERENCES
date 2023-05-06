@@ -1,13 +1,14 @@
+import {FaPlus} from "react-icons/fa"
 const CompareCommonCard = (props) => {
   return (
     <div class="card mb-3">
       <div class="row g-0">
         <div class="col-md-4">
-          {/* <img
-            src={props.images[0].url}
+          <img
+            src={props.images}
             class="img-fluid rounded-start"
             alt={props.title}
-          /> */}
+          />
         </div>
         <div class="col-md-8">
           <div class="card-body">
@@ -17,9 +18,7 @@ const CompareCommonCard = (props) => {
               lead-in to additional content. This content is a little bit
               longer.
             </p>
-            <p class="card-text">
-              <small class="text-muted">Last updated 3 mins ago</small>
-            </p>
+           <button className="btn btn-link"><FaPlus size={25}/></button>
           </div>
         </div>
       </div>

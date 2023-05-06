@@ -13,7 +13,7 @@ const ComparePage = () => {
         <hr />
         {cart.map((r, i) => (
           <div>
-            <CompareCommonCard title={r.title} />
+            <CompareCommonCard title={r.title} images={r.images[0].url} />
           </div>
         ))}
       </>

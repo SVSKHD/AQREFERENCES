@@ -29,10 +29,10 @@ const CheckoutPageComponent = ({ history }) => {
   const Navigate = useNavigate();
 
   useEffect(() => {
-    getUserCart(user.token).then((res) => {
-      setProducts(res.data.products);
-      setTotal(res.data.cartTotal);
-    });
+    // getUserCart(user.token).then((res) => {
+    //   setProducts(res.data.products);
+    //   setTotal(res.data.cartTotal);
+    // });
   }, []);
 
   const emptyCart = () => {
