@@ -75,22 +75,22 @@ function AquaNavHead() {
             <Nav.Link href="/about">About-us</Nav.Link>
           </Nav>
           <div className="me-3">
-          <button
-            onClick={() => {
-              dispatch({
-                type: "SET_VISIBLE",
-                payload: true,
-              });
-            }}
-            type="button"
-            className="btn btn-link position-relative text-dark"
-          >
-            <FaCartArrowDown size={25} />
-            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-              {cart.length}
-              <span class="visually-hidden">unread messages</span>
-            </span>
-          </button>
+            <button
+              onClick={() => {
+                dispatch({
+                  type: "SET_VISIBLE",
+                  payload: true,
+                });
+              }}
+              type="button"
+              className="btn btn-link position-relative text-dark"
+            >
+              <FaCartArrowDown size={25} />
+              <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                {cart.length}
+                <span class="visually-hidden">unread messages</span>
+              </span>
+            </button>
           </div>
           {user ? (
             <>

@@ -4,13 +4,17 @@ import AQ from "../../Assests/Default.png";
 const AqHomeCarousel = () => {
   return (
     <>
-      <Carousel variant="dark" className="shadow-lg img-thumbnail mb-3">
+      <Carousel 
+      variant="dark" 
+      className="shadow-lg img-thumbnail mb-3" 
+      controls={false}
+      >
         <Carousel.Item>
           <img
             className="d-block w-100"
             src={AQ}
             alt="First slide"
-            height="800"
+            height="400"
           />
           <Carousel.Caption className="text-start aq-home-carousel">
             <h3>First slide label</h3>
@@ -22,7 +26,7 @@ const AqHomeCarousel = () => {
             className="d-block w-100"
             src={AQ}
             alt="Second slide"
-            height="800"
+            height="400"
           />
 
           <Carousel.Caption className="text-start aq-home-carousel">

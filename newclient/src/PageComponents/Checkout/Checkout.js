@@ -30,7 +30,6 @@ const CheckoutPageComponent = ({ history }) => {
 
   useEffect(() => {
     getUserCart(user.token).then((res) => {
-      console.log("user cart res", JSON.stringify(res.data, null, 4));
       setProducts(res.data.products);
       setTotal(res.data.cartTotal);
     });
@@ -135,14 +134,18 @@ const CheckoutPageComponent = ({ history }) => {
                   </div>
                   <div className="d-grid gap-2 mb-2">
                     <div>{showProductSummary()}</div>
-                    <OverlayTrigger
-                      placement="bottom"
-                      overlay={<Tooltip>clear cart</Tooltip>}
-                    >
-                      <button onClick={emptyCart} className="btn btn-danger">
-                        <FaTrash size={25} />
-                      </button>
-                    </OverlayTrigger>
+                    {products.length ? (
+                      <OverlayTrigger
+                        placement="bottom"
+                        overlay={<Tooltip>clear cart</Tooltip>}
+                      >
+                        <button onClick={emptyCart} className="btn btn-danger">
+                          <FaTrash size={25} />
+                        </button>
+                      </OverlayTrigger>
+                    ) : (
+                      <></>
+                    )}
                   </div>
                   <h6 className="card-subtitle mb-2 text-body-secondary">
                     Card subtitle
