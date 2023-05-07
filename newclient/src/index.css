@@ -60,6 +60,10 @@ body {
   height: 180px;
 }
 
+.aq-card-height{
+  max-height: 800px;
+  overflow-y: auto;
+}
 
 
 .aq-welcome-card {
