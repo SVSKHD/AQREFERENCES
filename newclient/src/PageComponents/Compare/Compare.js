@@ -44,10 +44,10 @@ const ComparePage = () => {
         </div>
         <div className="row">
           <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-            <CompareExpandedCard product={product1} />
+            <CompareExpandedCard  />
           </div>
           <div className="col-md-6 col-lg-6 col-xs-12 col-sm-12">
-            <CompareExpandedCard product={product2} />
+            <CompareExpandedCard  />
           </div>
         </div>
       </div>
